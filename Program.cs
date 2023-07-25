@@ -11,55 +11,38 @@ namespace RandomPasswordTest
 
         public static void RandomPasswordTest()
         {
-            string username;
+            // Generate a random username 
+            string username = "user" + new Random().Next(10000);
             string password;
             bool loggedIn = false;
 
             while (true)
             {
-                // Keep asking for username until a valid value is provided
-                do
-                {
-                    Console.Write("Enter your username: ");
-                    username = Console.ReadLine();
-
-                    // Check if the username is empty or null
-                    if (string.IsNullOrEmpty(username))
-                    {
-                        Console.WriteLine("Invalid username. Please try again.");
-                    }
-                    else
-                    {
-                        // Reset the loggedIn flag if the user enters a new username
-                        loggedIn = false;
-                    }
-                } while (string.IsNullOrEmpty(username));
-
                 // Ask for password
                 Console.Write("Enter your password: ");
                 password = Console.ReadLine();
 
-                // Validate the password (you can replace this with your own validation logic)
+                // Validate the password 
                 if (password == "pwd" && !loggedIn)
                 {
                     Console.WriteLine("Login successful.");
-                    Console.WriteLine("Welcome !!! "+" "+username);
+                    Console.WriteLine("Welcome !! " + " " + username);
                     loggedIn = true;
                 }
                 else if (!loggedIn)
                 {
-                    Console.WriteLine("Invalid username or password. Please try again.");
+                    Console.WriteLine("Invalid password!! Please try again.");
                 }
 
                 if (loggedIn)
                 {
-                    // Ask to log out
+                    //  log out
                     Console.Write("Type 'logout' to log out: ");
                     string logoutInput = Console.ReadLine();
                     if (logoutInput.ToLower() == "logout")
                     {
                         Console.WriteLine("Logged out successfully.");
-                        break; // Exit the loop and end the test
+                        break; 
                     }
                     else
                     {
@@ -70,6 +53,7 @@ namespace RandomPasswordTest
         }
     }
 }
+
 
 
 
